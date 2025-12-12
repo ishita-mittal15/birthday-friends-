@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Happy Birthday Azkiya</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+        background: black;
+        font-family: Arial, sans-serif;
+        color: white;
+        position: relative;
+    }
+
+    /* NAVBAR */
+    nav {
+        width: 100%;
+        background: rgba(0,0,0,0.9);
+        padding: 10px 0;
+        text-align: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 100;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+    nav a {
+        color: gold;
+        font-size: 18px;
+        cursor: pointer;
+        text-decoration: none;
+        font-weight: bold;
+    }
+    nav a:hover { color: white; }
+
+    /* SECTIONS */
+    .section {
+        display: none;
+        width: 100%;
+        min-height: 100vh;
+        padding: 100px 20px 60px;
+        text-align: center;
+        overflow-x: hidden;
+    }
+    .active { display: block; }
+
+    /* GOLDEN BORDER SHINE EFFECT */
+    img, video {
+        width: 90%;
+        max-width: 350px;
+        border: 3px solid gold;
+        border-radius: 20px;
+        margin: 20px auto;
+        box-shadow: 0 0 10px gold;
+        transition: 0.5s;
+        display: block;
+    }
+    img:hover, video:hover {
+        box-shadow: 0 0 20px 5px gold;
+    }
+
+    /* SECRET MESSAGE */
+    .msg-btn {
+        padding: 15px 25px;
+        background: gold;
+        color: black;
+        border: none;
+        font-size: 18px;
+        border-radius: 10px;
+        cursor: pointer;
+        margin: 10px 5px;
+        font-weight: bold;
+    }
+    #secretMessageText {
+        color: gold;
+        font-size: 18px;
+        line-height: 1.5;
+        padding: 0 15px;
+        white-space: pre-wrap;
+        border-left: 3px solid gold;
+        padding-left: 10px;
+        display: inline-block;
+        margin-top: 20px;
+        max-width: 90%;
+    }
+
+    /* SPARKLE EFFECT */
+    .sparkle {
+        position: absolute;
+        width: 6px;
+        height: 6px;
+        background: gold;
+        border-radius: 50%;
+        opacity: 0;
+        animation: sparkleAnim 2s infinite;
+    }
+    @keyframes sparkleAnim {
+        0% { opacity: 0; transform: translate(0,0) scale(0.5);}
+        50% { opacity: 1; transform: translate(0, -20px) scale(1);}
+        100% { opacity: 0; transform: translate(0,0) scale(0.5);}
+    }
+
+    /* BALLOONS */
+    .balloon {
+        width: 35px;
+        height: 50px;
+        border-radius: 50%;
+        position: absolute;
+        bottom: -100px;
+        animation: fly 4s linear forwards;
+    }
+    @keyframes fly {
+        0% { transform: translateY(0); opacity: 1; }
+        100% { transform: translateY(-120vh); opacity: 0; }
+    }
+
+    /* CAKE & MESSAGE */
+    #cake {
+        font-size: 60px;
+        margin-top: 40px;
+        display: none;
+    }
+    #birthdayMessage {
+        display: none;
+        font-size: 24px;
+        margin-top: 20px;
+        color: gold;
+        max-width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* FOOTER */
+    footer {
+        text-align: center;
+        padding: 15px;
+        color: gold;
+        background: rgba(0,0,0,0.9);
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        font-size: 14px;
+    }
+
+    /* MOBILE RESPONSIVE */
+    h1 { font-size: 28px; padding: 0 10px; }
+    p { font-size: 16px; padding: 0 10px; }
+    @media(max-width:480px){
+        h1 { font-size: 22px; }
+        #secretMessageText { font-size: 16px; }
+        .msg-btn { width: 90%; font-size: 16px; }
+        img, video { width: 95%; }
+    }
+</style>
+</head>
+
+<body>
+
+<div id="sparkles"></div>
+
+<nav>
+    <a onclick="showSection('home')">Home</a>
+    <a onclick="showSection('secret')">Secret Messages</a>
+    <a onclick="showSection('pictures')">Pictures</a>
+    <a onclick="showSection('videos')">Videos</a>
+    <a onclick="showSection('surprise')">Surprise</a>
+</nav>
+
+<!-- HOME -->
+<div id="home" class="section active">
+    <h1 style="color: gold;">Happy Birthday Azkiya 🎉</h1>
+    <img src="img1.jpg"/>
+    <p>You are special, precious, and deserve the world 💛</p>
+</div>
+
+<!-- SECRET MESSAGE -->
+<div id="secret" class="section">
+    <h1 style="color: gold;">Secret Messages 💌</h1>
+    <div style="margin: 30px 0; display: flex; justify-content: center; flex-wrap: wrap; gap: 20px;">
+        <button class="msg-btn" onclick="showSecret(1)">Secret Message 1</button>
+        <button class="msg-btn" onclick="showSecret(2)">Secret Message 2</button>
+    </div>
+    <p id="secretMessageText"></p>
+</div>
+
+<!-- PICTURES -->
+<div id="pictures" class="section">
+    <h1 style="color: gold;">Her Pictures 📸</h1>
+    <img src="img2.jpg"/>
+    <img src="img3.jpg"/>
+    <img src="img5.jpg"/>
+</div>
+
+<!-- VIDEOS -->
+<div id="videos" class="section">
+    <h1 style="color: gold;">Her Videos 🎬</h1>
+    <video src="vid1.mp4" controls></video>
+    <video src="vid2.mp4" controls></video>
+    <video src="vid3.mp4" controls></video>
+</div>
+
+<!-- 23rd SURPRISE -->
+<div id="surprise" class="section">
+    <h1 style="color: gold;">Ready for the 22nd Surprise? 🎁</h1>
+    <button onclick="startSurprise()">Begin the Surprise</button>
+    <div id="cake">🎂</div>
+    <div id="birthdayMessage">Happy Birthday, Azkiya! 💛✨ You deserve all the happiness!</div>
+</div>
+
+<footer>
+    Made with ❤ by Ishita & Garvit | 2025
+</footer>
+
+<script>
+    // SECTION SWITCHING
+    function showSection(id){
+        document.querySelectorAll(".section").forEach(sec => sec.classList.remove("active"));
+        document.getElementById(id).classList.add("active");
+    }
+
+    // SECRET MESSAGES
+    const secret1 = `Happy Birthday, Azkiyya! 🎉✨
+Another year older, another year more wonderful—you really make growing up look effortless. 😌💗
+When I think of us, I don’t just remember the pretty moments; I remember the silly disagreements, the tiny arguments, the unexpected emotional moments—all of it. And honestly? Those little ups and downs stitched our bond tighter than anything else could. They made us us. 💞
+Palm Paradise gave us a bunch of stories—some we laugh about, some we roll our eyes at, and some we secretly cherish more than we admit. And through every phase, we’ve grown into a friendship where there’s comfort, honesty, and a kind of connection that doesn’t need constant proving. I hope one day we reach that level where we can talk about absolutely anything without even a second thought—no filters, no hesitation, just pure us. 🫶✨
+I genuinely mean it when I say you’re one of the best humans I’ve ever had in my life. 💗
+And yeah, if I’ve ever been irritating, dramatic, or just… me 😭😅 — I promise it always came from a place of love. You hold a little corner of my heart, and you always will. ❤
+I hope this year wraps you in joy, success, and good energy. May you get everything you dream of and more—because if anyone deserves a beautiful life, it’s you. 🌸💫 Keep shining, keep laughing, and keep being the extraordinary person you already are.
+
+Love you azk!!😘❤`;
+
+    const secret2 = `Happy 22nd Birthday! 🎉💛 Wishing you the happiest birthday ever! I hope this year brings you everything your heart has been hoping for. You deserve so much happiness, peace, and success because you genuinely bring positivity to the people around you. I’m really glad to have you as a friend, and I appreciate the little things about you — your kindness, the way you handle things with strength, and how you can make even ordinary days feel lighter. As you step into this new chapter, may you continue to grow, shine, and follow your passions without hesitation. I hope you create beautiful memories, meet amazing people, and reach milestones that make you proud of how far you’ve come. Enjoy every moment today, celebrate like you truly deserve, and remember that you’re surrounded by people who care about you. Cheers to your 22nd year — may it be full of laughter, love, and endless reasons to smile. 🎂✨`;
+
+    let index = 0;
+    let currentMessage = "";
+
+    function typeMessage(){
+        const el = document.getElementById("secretMessageText");
+        el.textContent = "";
+        index = 0;
+        function typeChar(){
+            if(index < currentMessage.length){
+                el.textContent += currentMessage.charAt(index);
+                index++;
+                setTimeout(typeChar, 15); // typing speed faster
+            }
+        }
+        typeChar();
+    }
+
+    function showSecret(n){
+        currentMessage = (n===1)? secret1 : secret2;
+        typeMessage();
+    }
+
+    // SPARKLE EFFECT
+    function createSparkle(){
+        const sparkle=document.createElement("div");
+        sparkle.classList.add("sparkle");
+        sparkle.style.left=Math.random()*window.innerWidth+"px";
+        sparkle.style.top=Math.random()*window.innerHeight+"px";
+        document.body.appendChild(sparkle);
+        setTimeout(()=>sparkle.remove(),2000);
+    }
+    setInterval(createSparkle, 200);
+
+    // 23 COLORFUL BALLOONS
+    const colors = ["red","blue","yellow","pink","purple","green","orange","cyan","magenta"];
+    function startSurprise(){
+        let count=0;
+        function releaseBalloon(){
+            let b=document.createElement("div");
+            b.classList.add("balloon");
+            b.style.background=colors[Math.floor(Math.random()*colors.length)];
+            b.style.left=Math.random()*90+"vw";
+            document.body.appendChild(b);
+            setTimeout(()=>b.remove(),4000);
+            count++;
+            if(count<23) setTimeout(releaseBalloon,300);
+            else setTimeout(showCake,2000);
+        }
+        function showCake(){
+            document.getElementById("cake").style.display="block";
+            setTimeout(()=>document.getElementById("birthdayMessage").style.display="block",1500);
+        }
+        releaseBalloon();
+    }
+</script>
+</body>
+</html>
